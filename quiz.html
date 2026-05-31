@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Important Questions 😇</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="quiz.css" />
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="bg"></div>
+<div id="starsContainer"></div>
+<div id="confettiContainer"></div>
+
+<a class="back-link" href="index.html">← Back to birthday</a>
+
+<div class="screen">
+  <div class="card" id="card">
+
+    <!-- Question -->
+    <div id="qView">
+      <p class="progress" id="progressText">Question 1 of 4</p>
+      <span class="q-emoji" id="qEmoji">🧠</span>
+      <p class="q-text" id="qText">I'm smarter than you, right?</p>
+      <div class="btn-row">
+        <button class="btn-yes" onclick="answerYes()">Yes 😇</button>
+        <button class="btn-yes" style="background:transparent;border:2px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);" id="noPlaceholder">No 😤</button>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="result" id="resultView">
+      <div class="result-emoji" id="rEmoji"></div>
+      <p class="result-title" id="rTitle"></p>
+      <p class="result-sub" id="rSub"></p>
+      <button class="btn-next" id="btnNext" onclick="nextQuestion()">Next question →</button>
+    </div>
+
+    <!-- Done -->
+    <div class="done-screen" id="doneView">
+      <div style="font-size:60px;margin-bottom:16px;">🏆</div>
+      <p class="result-title">Survey says: correct!</p>
+      <p class="result-sub" style="margin-bottom:28px;">You answered every question perfectly. What a legend. 😂<br/>Happy 27th birthday! 🎂</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <button class="btn-next" onclick="restartQuiz()">Play again 🔄</button>
+        <button class="btn-next" style="background:var(--rose);color:white;" onclick="window.location.href='index.html'">Back to party 🎉</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- The runaway NO button, lives outside the card at fixed position -->
+<button class="btn-no" id="noBtn">No 😤</button>
+
+<script src="quiz.js"></script>
+</body>
+</html>

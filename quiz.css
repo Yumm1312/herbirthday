@@ -1,0 +1,235 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose: #f43f7e;
+      --violet: #9333ea;
+      --violet-light: #c084fc;
+      --dark: #1a0a2e;
+      --cream: #fffbf7;
+    }
+
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: white;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--rose);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--violet-light);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+    }
+
+    /* BG */
+    .bg {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 20% 30%, rgba(147,51,234,0.3) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 50% at 80% 70%, rgba(244,63,126,0.25) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Stars */
+    .star {
+      position: fixed;
+      background: white;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: twinkle var(--d,3s) ease-in-out infinite;
+      animation-delay: var(--dl,0s);
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0.15; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.5); }
+    }
+
+    /* Confetti */
+    .cp {
+      position: fixed;
+      border-radius: 2px;
+      pointer-events: none;
+      animation: cfall linear forwards;
+      z-index: 9999;
+    }
+    @keyframes cfall {
+      0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+      85% { opacity: 1; }
+      100% { transform: translateY(110vh) rotate(800deg); opacity: 0; }
+    }
+
+    /* Main layout */
+    .screen {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      padding: 24px;
+    }
+
+    /* Card */
+    .card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      padding: 52px 48px 48px;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .progress {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+
+    .q-emoji { font-size: 48px; display: block; margin-bottom: 16px; }
+
+    .q-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 40px;
+      color: white;
+    }
+
+    /* Buttons row — fixed layout so YES stays put */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn-yes {
+      padding: 14px 44px;
+      background: var(--rose);
+      color: white;
+      border: none;
+      border-radius: 60px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      cursor: none;
+      transition: transform 0.15s, background 0.2s;
+      position: relative;
+      z-index: 2;
+    }
+    .btn-yes:hover { background: #e11d6a; transform: scale(1.07); }
+    .btn-yes:active { transform: scale(0.96); }
+
+    /* NO button — fixed position, roams the whole screen */
+    .btn-no {
+      padding: 14px 44px;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 60px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      cursor: none;
+      position: fixed;
+      z-index: 9997;
+      white-space: nowrap;
+      transition: transform 0.12s cubic-bezier(0.34,1.56,0.64,1), left 0.08s, top 0.08s;
+      user-select: none;
+      pointer-events: all;
+    }
+
+    /* Result overlay */
+    .result {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    .result.show {
+      display: flex;
+      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+    .result-emoji { font-size: 56px; margin-bottom: 14px; }
+    .result-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 4vw, 30px);
+      margin-bottom: 8px;
+    }
+    .result-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    .btn-next {
+      padding: 13px 36px;
+      background: white;
+      color: var(--dark);
+      border: none;
+      border-radius: 60px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: none;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .btn-next:hover { background: var(--violet-light); transform: scale(1.05); }
+
+    /* Done screen */
+    .done-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    .done-screen.show {
+      display: flex;
+      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) forwards;
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      70% { transform: scale(1.04); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .back-link {
+      position: fixed;
+      top: 24px; left: 24px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      z-index: 20;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: rgba(255,255,255,0.8); }
+
+    @media (max-width: 480px) {
+      .card { padding: 36px 24px 32px; }
+      html, body { cursor: auto; }
+      .cursor, .cursor-ring { display: none; }
+    }
