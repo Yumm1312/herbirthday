@@ -50,12 +50,12 @@
     },
     {
       emoji: '🎂',
-      text: "This is the best birthday gift you've ever received?",
+      text: "હું કે ગમ્યું કે ની ગિફ્ટ 😁?",
       yes: { emoji: '😌', title: 'Correct answer!', sub: "You're welcome. No need to thank me... actually please do." }
     },
     {
       emoji: '🫂',
-      text: "I'm your favourite person in the entire universe?",
+      text: "મારા વગર ની ગમે 😛?",
       yes: { emoji: '💖', title: "And that's the truth!", sub: "Happy 27th, bestie. Love you to the moon and back 🌙" }
     }
   ];
